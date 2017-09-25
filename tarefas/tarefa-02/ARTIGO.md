@@ -677,9 +677,19 @@ int main(void) {
 # Bibliografia
 
 http://www.golangbr.org/doc/
+
 http://goporexemplo.golangbr.org/
+
 https://tableless.com.br/por-que-utilizar-gogolang-no-seu-backend/
+
 https://pt.slideshare.net/natavenancio/linguagem-go-12238181
+
 http://eltonminetto.net/post/2017-07-28-gerenciando-dependencias-golang/
+
 https://github.com/golang/dep/issues/847
+
 https://code.tutsplus.com/pt/tutorials/lets-go-object-oriented-programming-in-golang--cms-26540
+
+https://www.ime.usp.br/~gold/cursos/2015/MAC5742/reports/GoLang.pdf
+
+https://medium.com/@ViniciusPach_97728/go-composi%C3%A7%C3%A3o-vs-heran%C3%A7a-2e8b78928c26
