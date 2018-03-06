@@ -20,9 +20,14 @@ nome (nm,_,_) = nm              -- as notas são ignoradas
 gabP1 : Aluno -> Float
 gabP1 (_,p1,_) = p1
 
-alunAprov : Aluno ->(String,Float)
-alunAprov (nm,media(Aluno))
+alunAprov : Aluno ->(String, Float)
+alunAprov (nm,n1,n2) = (nm, (n1+n2)/2 )
 
+notasP1: Aluno -> Float
+notasP1 (_,n1,_) = n1
+
+geraVetNotas: Aluno -> List Float -> List Float
+geraVetNotas (_,n1,n2) lista = n2 :: (n1 :: lista)
 
 -- Por fim, considere as assinaturas para as funções map, filter, e fold a seguir:
 
@@ -43,7 +48,7 @@ alunAprov (nm,media(Aluno))
 -- Usando as definições acima, forneça a implementação para os três trechos marcados com <...>:
 
 turma: Turma
-turma = [ ("Joao",7,4), ("Maria",10,8) ]       -- 50 alunos
+turma = [ ("Joao",7,7.5), ("Maria",10,8), ("André",10,10), ("Julia",9,9.5), ("José",6,5) ]       -- 50 alunos
 
 -- a) LISTA COM AS MÉDIAS DOS ALUNOS DE "turma" ([5.5, 9, ...])
 medias: List Float
@@ -55,20 +60,27 @@ aprovados = List.map nome (List.filter (\a-> (media a) >= 7)  turma)
 
 -- c) MÉDIA FINAL DOS ALUNOS DE "turma" (média de todas as médias)
 total: Float
-total = (List.foldl (+)  0  medias)/2
+total = (List.foldl (+)  0  medias)/5
 -- d) LISTA DE ALUNOS QUE GABARITARAM A P1 ([("Maria",10,8), ...])
 turma_dez_p1: Turma
 turma_dez_p1 = List.filter (\a-> (gabP1 a) >= 10)  turma
 
 -- e) LISTA COM OS NOMES E MEDIAS DOS ALUNOS APROVADOS ([("Maria",9), ...])
 aprovados2: List (String,Float)
-aprovados2 = List.map (List.filter (\a-> (media a) >= 7)  turma)
+aprovados2 = List.map alunAprov (List.filter (\a-> (media a) >= 7)  turma)
 
 -- f) LISTA COM TODAS AS NOTAS DE TODAS AS PROVAS ([7,4,10,8,...])
---notas: List Float
---notas = ... fold
+notas: List Float
+notas = List.foldl geraVetNotas [] turma
+
 
 -- É permitido usar funções auxiliares, mas não é necessário.
 -- (As soluções são pequenas.)
 
-main = text (toString aprovados2)
+main1 = text (toString turma)
+main2 = text (toString medias)
+main3 = text (toString aprovados)
+main4 = text (toString total)
+main5 = text (toString turma_dez_p1)
+main6 = text (toString aprovados2)
+main = text (toString notas)
