@@ -82,10 +82,12 @@ function love.update(dt)
 		
 
 		--Tarefa-07
-		--Escopo: <<A incluir>>
-		--Tempo de Vida: Os obstáculos são gerados de modo parcialmente randômico (parâmetro lastTimeObstacle)
-		--removidos assim que deixam de estar vísiveis para o usuário,
-		--ou seja assim que a posição .x do obstáculo é inferior a zero.
+		--Variáveis: obstacles, birds
+		--Escopo: Global(ambas)
+		--Tempo de Vida: Por serem globais, o tempo de vida dessas variáveis se extende até o fim
+		--da execução do jogo.Os obstáculos são gerados de modo parcialmente randômico (parâmetro 
+		--lastTimeObstacle) removidos assim que deixam de estar vísiveis para o usuário,ou seja 
+		--assim que a posição .x do obstáculo é inferior a zero.
 
 		--gera Obstaculos 
 		--Quando lastTimeObstacle atinge 0 gera um novo obstáculo e a lastTimeObstacle passa
